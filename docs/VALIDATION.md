@@ -10,7 +10,7 @@ Verified locally on macOS 27.0.1, Apple Silicon, with Xcode Command Line Tools:
 - In the real menu-bar host: the panel opens and closes through the path the global shortcut uses, panel visibility is tracked, and the new-port dot turns on when a disposable local server starts and clears when the panel opens.
 - Container support exercised against a fake engine socket, including the stop request and rejection of malformed identifiers.
 - The logo drawn by the app matches `Brand/logo.svg` pixel for pixel at 512 px.
-- Shell scripts and workflow YAML pass syntax checks.
+- Shell scripts and workflow YAML pass syntax checks, and the GitHub Actions workflow (tests plus universal build) passes on a hosted macOS runner.
 - Source scan found no home-directory paths or common credential/private-key patterns. This is a targeted check, not a comprehensive security audit.
 
 Not yet verified by a person or on real hardware:
@@ -23,7 +23,6 @@ Not yet verified by a person or on real hardware:
 
 Still requires validation before a general public binary release:
 
-- GitHub Actions execution after the repository is created.
 - Developer ID signing, Apple notarization and installation of a quarantined download.
 - Runtime testing on Intel and older supported macOS releases.
 - Live menu-bar interactions across display arrangements and accessibility settings.
