@@ -9,7 +9,7 @@ Find what's listening on localhost, open it in your browser, or stop it. No main
 
 **1.4 beta** · macOS 13+ · Swift + SwiftUI · Apple Silicon and Intel universal build
 
-<img src="docs/panel.png" width="420" alt="Yolk with grouped sample services and favorites">
+<img src="docs/panel.png" width="420" alt="Yolk listing favorites, a development server and apps with their icons">
 
 ## Features
 
@@ -69,7 +69,7 @@ Searching temporarily expands matching groups without replacing their saved coll
 
 Open the gear for settings. Appearance changes are immediate; refresh changes apply at the next scheduled scan. “Reduce Motion” and “Reduce Transparency” are respected. Restoring appearance preserves favorites, hidden services and behavioral settings. There are no system notifications: a small dot on the menu bar icon marks ports that appeared since you last opened the panel, and those rows carry the same dot until you close it. A service restarting on the same port within a minute does not count as new. The dot can be turned off in settings.
 
-<img src="docs/settings.png" width="420" alt="Compact settings in the Mustard palette">
+<img src="docs/settings.png" width="420" alt="Compact settings in the Electric palette, dark mode">
 
 ## How it works
 
