@@ -1,0 +1,24 @@
+name: Bug report
+description: Report a problem with Yolk.
+title: "[Bug] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Yolk version
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: macOS version and chip
+      placeholder: "macOS 15.7, Apple M2"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps, expected result, and actual result
+      description: Remove private project names, paths and addresses from screenshots or logs.
+    validations:
+      required: true

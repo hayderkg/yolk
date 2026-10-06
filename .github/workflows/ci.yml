@@ -1,0 +1,36 @@
+name: Build and test
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  macos:
+    runs-on: macos-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Tests on the runner architecture
+        run: swift test
+      - name: Universal development build
+        env:
+          YOLK_UNIVERSAL: '1'
+        run: bash scripts/build.sh
+      - name: Verify and package
+        run: |
+          codesign --verify --strict 'dist/Yolk.app'
+          YOLK_ARCHITECTURES="$(lipo -archs 'dist/Yolk.app/Contents/MacOS/LocalPorts')"
+          [[ " $YOLK_ARCHITECTURES " == *" arm64 "* && " $YOLK_ARCHITECTURES " == *" x86_64 "* ]]
+          ditto -c -k --sequesterRsrc --keepParent 'dist/Yolk.app' dist/Yolk-development-universal.zip
+      - uses: actions/upload-artifact@v7
+        with:
+          name: Yolk-development-universal-not-notarized
+          path: dist/Yolk-development-universal.zip
+          if-no-files-found: error
+          retention-days: 14
